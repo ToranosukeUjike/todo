@@ -52,14 +52,8 @@ export default class Todos extends Vue {
 
     get display_todos() {
         if(this.find_flg) {
-            let arr: Todo[] = [];
-            let data = this.todos;
-            data.forEach(element => {
-                if (element.state == this.find_state) {
-                    arr.push(element);
-                }
-            });
-            return arr;
+            // 1行で書ける
+            return this.todos.filter((item) => item.state === this.find_state);
         } else {
             return this.todos;
         }
@@ -85,7 +79,8 @@ export default class Todos extends Vue {
         this.find_flg = true;
     }
 
-    flag_rest() {
+    // タイポしてる
+    flag_reset() {
         this.find_flg = false;
     }
 }
